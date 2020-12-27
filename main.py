@@ -55,12 +55,18 @@ env.unwrapped.window.push_handlers(key_handler)
 # driver = ManualDriver(key_handler=key_handler)
 driver = AutoDriver(environment=env)
 
-stretch = RoadStretch(length=100, angle_rad=3.14 / 2)
+node1 = GraphNode(x_center=0, y_center=0)
+node2 = GraphNode(x_center=1, y_center=1)
 
-print(stretch.length)
-print(stretch.angle_deg)
-print(stretch.angle_rad)
- 
+graph = Graph()
+graph.add_node(node1)
+graph.add_node(node2)
+
+graph.link_last_two_nodes()
+
+node1.print_neighbors()
+node2.print_neighbors()
+
 def update(dt):
     action = driver.get_action()
 
